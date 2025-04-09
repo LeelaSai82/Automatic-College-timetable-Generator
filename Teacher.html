@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="conatianer">
+        <div class="nav">
+            <div class="icon">
+                <img src="./logo.jpeg" alt="" width="50" height="50">
+                <h3>Schedular</h3>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <h1>Generate Your Time table</h1>
+            <a href="#generate"><button>Generate Here</button></a>
+        </div>
+        <section>
+            <h2>We Offer</h2>
+            <div class="card">
+                <div class="card1">
+                    <img src="https://www.sharda.ac.in/blog/attachments/blog_images/BTech-in-Computer-Science2-min.jpg" alt="">
+                    <div class="details">
+                        <h3>Time Table</h3>
+                        <p>Generate your time table</p>
+                        <a href="./TimeTables/BtechTimeTable.html"><input type="button" value="generate" id="generate"></a>
+                    </div>
+                </div>
+                <div class="card2">
+                    <img src="https://www.careerguide.com/career/wp-content/uploads/2023/07/m-tech-full-form-1.png" alt="" >
+                    <div class="details">
+                        <h3>Time Table</h3>
+                        <p>Generate your time table</p>
+                        <a href="./TimeTables/MtechTimeTable.html"><input type="button" value="generate" id="generate"></a>
+                    </div>
+                </div>
+                <div class="card3">
+                    <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/What_are_the_Entry_Requirements_for_an_MBA.jpg" alt="">
+                    <div class="details">
+                        <h3>Time Table</h3>
+                        <p>Generate your time table</p>
+                        <a href="./TimeTables/MbaTimeTable.html"><input type="button" value="generate" id="generate"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<style>
+    * {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    input[type="button"] {
+        margin-top: 20px;
+        padding: 10px;
+        width: 150px;
+        border-radius: 15px;
+        border: none;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0px 0px 10px solid black;
+        cursor: pointer;
+    }
+
+    h1 {
+        color: white;
+        background-color: black;
+        border-radius: 10px;
+        margin: 0;
+        padding: 10px;
+        margin-bottom: 40px;
+    }
+
+    h2 {
+        color: black;
+        font-size: 40px;
+    }
+
+    h3 {
+        color: white;
+        margin: 0;
+        padding: 10px;
+        font-weight: bold;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #000000;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+    }
+
+    .icon {
+        display: flex;
+        align-items: center;
+    }
+
+    .icon img {
+        border-radius: 50%;
+    }
+
+    .menu ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menu ul li {
+        list-style: none;
+        margin-right: 20px;
+    }
+
+    .menu ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 17px;
+    }
+
+    .main {
+        margin: 10px 0;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+        background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20230713/pngtree-3d-rendering-of-a-classroom-with-an-empty-blackboard-image_3868172.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
+
+    .main button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #3498db;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card1,
+    .card2,
+    .card3 {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        height: 350px;
+        padding: 20px;
+        background: rgb(2, 0, 36);
+        background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(14,14,17,1) 35%, rgba(43,84,140,1) 100%);
+        color: white;
+        border-radius: 10px;
+        margin-right: 20px;
+        overflow: hidden;
+    }
+
+    .card1:hover,
+    .card2:hover,
+    .card3:hover {
+        transform: scale(1.1);
+        transition: 0.3s;
+    }
+
+    .card1,
+    .card2,
+    .card3 {
+        transition: transform 0.5s;
+    }
+
+    .card1 img, .card2 img, .card3 img {
+        margin-top: -80px;
+        margin-bottom: 20px;
+        width: 350px;
+        height: 200px;
+    }
+
+    .details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    @media screen and (max-width: 600px) {
+        .card {
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 23px;
+        }
+    }
+</style>
+<script>
+     
+</script>
+</html>

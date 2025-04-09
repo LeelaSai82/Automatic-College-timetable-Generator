@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Time Table</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="back">back</button>
+    <h1>View CSE-AI Time Table</h1>
+    <div id="table-container">
+    </div>
+
+    <script>
+                window.addEventListener('load', () => {
+                    const tableContainer = document.getElementById('table-container');
+                    const timeTable = localStorage.getItem('timeTableCSEAI');
+                    if (timeTable) {
+                        tableContainer.innerHTML = timeTable;
+                    } else {
+                        tableContainer.innerHTML = '<p>👨🏻‍💻 No Time Table Sheduled!</p>';
+                        
+                    }
+                });
+
+        document.getElementById('back').addEventListener('click', () => {
+            window.location.href = './ViewBtech.html';
+        });
+    </script>
+</body>
+<style>
+    * {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+    
+    h1 {
+        text-align: center;
+        background-color: #afdde4;
+        padding: 10px;
+        border-radius: 20px;
+
+    }
+    
+    #table-container {
+        margin-top: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        padding: 20px;
+        overflow-x: auto;
+    }
+    
+    table {
+        width: 100%;
+        border-radius: 20px;
+        background-color: rgb(147, 251, 173);
+        border-collapse: collapse;
+    }
+    
+    th {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px;
+        text-align: center;
+    }
+    
+    td {
+        padding: 12px;
+        text-align: center;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        background-color: #4CAF50;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 7px;
+    }
+
+    #back {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #010101a7;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 7px;
+    }
+    
+</style>
+</html>

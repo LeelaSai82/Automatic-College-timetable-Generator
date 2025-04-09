@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.Tech Time Table Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <button id="back">back</button>
+    <h1>Generate For CSD Time Table</h1>
+
+    <div id="selects">
+        <label for="sem" class="entersem">Enter semeseter Details</label>
+        <input type="text" placeholder="ex: Sem 2-1" id="sem"><br>
+        <label for="subjectCount" class="srange">Select number of subjects:</label>
+        <select id="subjectCount" class="srange">
+            <option value="0">Select available</option>
+            <option value="5">5 Subjects</option>
+            <option value="6">6 Subjects</option>
+            <option value="7">7 Subjects</option>
+            <option value="8">8 Subjects</option>
+        </select>
+    </div>
+
+    <div id="subjectsContainer"></div>
+
+    <button id="generateBtn">Generate Time Table</button>
+
+    <div id="timetableContainer"></div>
+    <div id="subjectsListContainer"></div>
+    <button id="save">save</button>
+</body>
+<style>
+    input[type="text"] {
+        text-transform: capitalize;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        border: none;
+        outline: 0;
+    }
+    .srange {
+       margin-top: 30px; 
+       padding: 10px;
+    }
+    * {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+    #selects {
+        padding: 7px;
+        background-color: rgb(185, 203, 243);
+        width: 98%;
+        border-radius: 10px;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: -20px;
+        text-align: center;
+        background-color: #afdde4;
+        padding: 10px;
+        border-radius: 20px;
+    }
+
+    select {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    option {
+        padding: 5px;
+    }
+
+    #generateBtn {
+        padding: 10px 20px;
+        border: none;
+        background-color: #09a115a7;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 7px;
+    }
+
+    #generateBtn:hover {
+        background-color: #0a8f0aa7;
+        transform: scale(1.1);
+        transition: 0.3s;
+    }
+
+    #generateBtn {
+        transform: scale(1.0);
+        transition: 0.3s;
+    }
+
+    #save {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #09a115a7;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 7px;
+    }
+
+    #save:hover {
+        background-color: #0a8f0aa7;
+        transform: scale(1.1);
+        transition: 0.3s;
+    }
+
+    #save {
+        transform: scale(1.0);
+        transition: 0.3s;
+    }
+
+    #back {
+        position: fixed;
+        top: 16px;
+        left: 35px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #010101a7;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 7px;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+
+    label {
+        margin-right: 10px;
+    }
+
+    input,
+    select,
+    button {
+        margin-bottom: 10px;
+    }
+
+    #subjectsContainer {
+        margin-top: 20px;
+    }
+
+    .subject {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .subject label {
+        display: block;
+    }
+
+    .subject input, .subject select {
+        width: 100%;
+        padding: 7px;
+    }
+
+    .subject input[type="text"],input[type="number"], select {
+        text-transform: capitalize;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        border: none;
+        outline: 0;
+    }
+
+    #timetableContainer {
+        margin-top: 20px;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+    }
+
+    th {
+        background-color: aquamarine;
+    }
+
+    #subjectsListContainer {
+        margin-top: 20px;
+    }
+</style>
+<script>
+    document.getElementById('back').addEventListener('click', () => {
+        window.location.href = './BtechTimeTable.html';
+    });
+    
+    document.addEventListener('DOMContentLoaded', function () {
+        const subjectCountSelect = document.getElementById('subjectCount');
+        const subjectsContainer = document.getElementById('subjectsContainer');
+        const generateBtn = document.getElementById('generateBtn');
+        const timetableContainer = document.getElementById('timetableContainer');
+        const subjectsListContainer = document.getElementById('subjectsListContainer');
+        const saveBtn = document.getElementById('save');
+    
+        saveBtn.style.display = 'none';
+    
+        let subjects = [];
+    
+        subjectCountSelect.addEventListener('change', function () {
+            const subjectCount = parseInt(subjectCountSelect.value, 10);
+    
+            // Clear previous inputs
+            subjectsContainer.innerHTML = '';
+    
+            // Create inputs for subjects and credits
+            for (let i = 0; i < subjectCount; i++) {
+                const subjectDiv = document.createElement('div');
+                subjectDiv.className = 'subject';
+    
+                subjectDiv.innerHTML = `
+                    <label for="subject_${i + 1}">Subject ${i + 1}:</label><br>
+                    <input type="text" id="subject_${i + 1}" name="subject_${i + 1}" required>
+                    <br>
+                    <label for="subjectCode_${i + 1}">Subject Code:</label><br>
+                    <input type="text" id="subjectCode_${i + 1}" name="subjectCode_${i + 1}" required>
+                    <br>
+                    <label for="credit_${i + 1}">Credit:</label><br>
+                    <input type="number" id="credit_${i + 1}" name="credit_${i + 1}" min="1" required>
+                    <br>
+                    <label for="lab_${i + 1}">Lab?</label><br>
+                    <select id="lab_${i + 1}" name="lab_${i + 1}" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                `;
+    
+                subjectDiv.style.border = 'none';
+                subjectDiv.style.padding = '30px';
+                subjectDiv.style.borderRadius = '5px';
+                subjectDiv.style.boxShadow = '2px 3px 5px rgba(0, 0, 0, 0.1)';
+                subjectDiv.style.margin = '0 auto';
+                subjectDiv.style.marginBottom = '20px';
+                subjectDiv.style.backgroundColor = 'aquamarine';
+                subjectDiv.style.width = '300px';
+                subjectDiv.style.textAlign = 'center';
+
+                
+
+    
+                subjectsContainer.appendChild(subjectDiv);
+            }
+        });
+    
+        generateBtn.addEventListener('click', function () {
+            subjects = []; // Clear previous subjects
+    
+            // Collect entered subjects, codes, credits, and lab info
+            const subjectInputs = subjectsContainer.querySelectorAll('.subject');
+            subjectInputs.forEach(subjectDiv => {
+                const subject = subjectDiv.querySelector(`input[name^="subject"]`).value;
+                const subjectCode = subjectDiv.querySelector(`input[name^="subjectCode"]`).value;
+                const credit = parseInt(subjectDiv.querySelector(`input[name^="credit"]`).value, 10);
+                const lab = subjectDiv.querySelector(`select[name^="lab"]`).value === 'yes';
+                subjects.push({ subject, subjectCode, credit, lab });
+            });
+    
+            // Generate timetable based on credits
+            generateTimetable();
+            generateSubjectsList(); // Call the generateSubjectsList function
+        });
+
+
+    
+        function generateTimetable() {
+            const whichSem = document.getElementById('sem');
+            const semValue = whichSem.value;
+            console.log(semValue);
+            saveBtn.style.display = 'block';
+    
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+            const timings = ['8:10-9:00 AM','9:00-9:50 AM','9:50-10:40 AM', '11:00-11:50 PM', '11:50-12:40 PM', '2:00-2:50 PM', '2:50-3:40 PM']; // Example timings
+    
+            // Clear previous timetable
+            timetableContainer.innerHTML = '';
+    
+            const totalCredits = subjects.reduce((sum, subj) => sum + subj.credit, 0);
+            const classesPerWeek = totalCredits >= 15 ? 7 : totalCredits >= 10 ? 5 : totalCredits >= 5 ? 3 : 2; // Adjust based on total credits
+    
+            const table = document.createElement('table');
+            const headerRow = table.insertRow();
+            headerRow.insertCell().textContent = semValue;
+    
+            // Insert day headers
+            days.slice(0, classesPerWeek).forEach(day => {
+                const cell = headerRow.insertCell();
+                cell.textContent = day;
+            });
+    
+            // Initialize subject slots for each day
+            const subjectsPerDay = {};
+            days.slice(0, classesPerWeek).forEach(day => {
+                subjectsPerDay[day] = [];
+            });
+    
+            // Filter labs and theory subjects
+            const labs = subjects.filter(subject => subject.lab);
+            const theories = subjects.filter(subject => !subject.lab);
+    
+            // Assign unique subjects to timetable
+            timings.forEach(time => {
+                const row = table.insertRow();
+                const timCSDll = row.insertCell();
+                timCSDll.textContent = time;
+    
+                days.slice(0, classesPerWeek).forEach(day => {
+                    const cell = row.insertCell();
+    
+                    // Get subjects for the day (labs preferred on Friday)
+                    const availableSubjects = (day === 'Friday') ? labs : theories;
+    
+                    // Filter subjects that haven't been assigned yet to this day
+                    const remainingSubjects = availableSubjects.filter(subj => !subjectsPerDay[day].includes(subj));
+    
+                    if (remainingSubjects.length > 0) {
+                        // Randomly select a subject
+                        const randomSubject = remainingSubjects[Math.floor(Math.random() * remainingSubjects.length)];
+                        cell.textContent = randomSubject.subject;
+    
+                        // Mark subject as assigned for this day
+                        subjectsPerDay[day].push(randomSubject);
+                    } else {
+                        // If no unique subject available, fill with lab subjects
+                        const labSubject = labs[Math.floor(Math.random() * labs.length)];
+                        cell.textContent = `${labSubject.subject} Lab`;
+                    }
+                });
+            });
+    
+            timetableContainer.appendChild(table);
+        }
+    
+        function generateSubjectsList() {
+            // Clear previous subjects list
+            subjectsListContainer.innerHTML = '';
+        
+            const table = document.createElement('table');
+            const headerRow = table.insertRow();
+            
+            // Create table headers
+            const headers = ['Subject', 'Subject Code', 'Credits', 'Type'];
+            headers.forEach(headerText => {
+                const headerCell = document.createElement('th');
+                headerCell.textContent = headerText;
+                headerRow.appendChild(headerCell);
+            });
+        
+            // Create table rows for each subject
+            subjects.forEach(subj => {
+                const row = table.insertRow();
+        
+                // Subject Name
+                const namCSDll = row.insertCell();
+                namCSDll.textContent = subj.subject;
+        
+                // Subject Code
+                const codCSDll = row.insertCell();
+                codCSDll.textContent = subj.subjectCode;
+        
+                // Credits
+                const creditCell = row.insertCell();
+                creditCell.textContent = subj.credit;
+        
+                // Type (Lab or Theory)
+                const typCSDll = row.insertCell();
+                typCSDll.textContent = subj.lab ? 'Lab' : 'Theory';
+            });
+        
+            // Append the table to the subjectsListContainer
+            subjectsListContainer.appendChild(table);
+        }
+        
+    
+        saveBtn.addEventListener('click', function () {
+            const tableHtml = timetableContainer.innerHTML;
+            const subjectsListHtml = subjectsListContainer.innerHTML;
+            localStorage.setItem('subjectsListCSD', subjectsListHtml);
+            localStorage.setItem('timeTableCSD', tableHtml);
+            alert('Time Table saved successfully!');
+        });
+    
+        // Restore saved timetable and subjects list from localStorage
+        const savedTimeTable = localStorage.getItem('timeTableCSD');
+        const savedSubjectsList = localStorage.getItem('subjectsListCSD');
+        if (savedTimeTable) {
+            timetableContainer.innerHTML = savedTimeTable;
+        }
+        if (savedSubjectsList) {
+            subjectsListContainer.innerHTML = savedSubjectsList;
+        }
+    });
+    
+</script>
+
+</html>

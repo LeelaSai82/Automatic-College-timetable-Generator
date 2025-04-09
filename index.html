@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./logo.jpeg" type="image/x-icon">
+    <title>Schedular</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="main">
+        <div class="logo">
+            <img src="./logo.jpeg" alt="" width="200" height="200">
+        </div>
+        <h1 align="center">Scheduler</h1>
+        <div class="btns">
+            <a href="./LoginTeacher.html"><button>For Teachers</button></a>
+            <a href="./LoginStudent.html"><button>For Students</button></a>
+        </div>
+    </div>
+</body>
+<style>
+    * {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    body {
+        background-image: url("https://th.bing.com/th/id/R.b9c1e7500476a685caab230392e3dc8d?rik=GEl7qrBqUcM5cw&riu=http%3a%2f%2fcommunity.smu.ca%2fconference%2fplog-content%2fimages%2fsmu-conference-venues%2funilever-lounge%2fclassroom.jpg&ehk=r70S1xju1e4t2XsZ9QM%2bQUE6QcbAtiZZNFqphF7CRZI%3d&risl=1&pid=ImgRaw&r=0");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
+
+    h1 {
+        margin-top: -10px;
+        margin-bottom: 50px;
+        color: white;
+        padding: 5px;
+        border-radius: 7px;
+        border: 2px solid white;
+        background-color: black;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .logo {
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+
+    .logo img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .logo img:hover {
+        transform: scale(1.2);
+        transition: 0.5s;
+    }
+
+    .logo img {
+        transition: transform 0.5s;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        background-color: #4CAF50;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 7px;
+    }
+
+    button:hover {
+        background-color: #07730d;
+        transform: scale(1.1);
+        transition: 0.3s;
+    }
+
+    button:active {
+        background-color: #3e8e41;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    a:active {
+        text-decoration: none;
+    }
+</style>
+
+</html>

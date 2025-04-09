@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="login">
+            <h2>Login</h2>
+            <form action="./Student.html" >
+                <input type="text" placeholder="Student Name" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <a onclick="showSignup()">Don't have account? SignUp</a>
+            </form>
+        </div>
+        <div class="signup">
+            <h2>Signup</h2>
+            <form action="./Student.html" >
+                <input type="text" placeholder="Studennt Name" required>
+                <input type="text" placeholder="Student Id" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit">Signup</button>
+                <a onclick="showLogin()">Already Account exists! Login</a>
+            </form>
+        </div>
+    </div>
+</body>
+<style>
+    * {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    body {
+        background-image: url("https://smsmschool.org/wp-content/uploads/2022/08/617e82-8dVL._AC_SL1008_.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .login {
+        margin-left: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 50px;
+        padding: 20px;
+        background-color: rgb(159, 255, 255);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+    }
+
+    .login form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .signup form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .login h2 {
+        margin-bottom: 20px;
+    }
+
+    .login input {
+        margin-bottom: 10px;
+        padding: 10px;
+        width: 200px;
+        border: 1px solid #000;
+        border-radius: 5px;
+    }
+
+    .login button {
+        padding: 10px;
+        width: 150px;
+        border: none;
+        border-radius: 5px;
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .login button:hover {
+        transform: scale(1.1);
+        transition: 0.3s;
+    }
+
+    .login a {
+        margin-top: 10px;
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+    }
+
+    .signup {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        background-color: rgb(159, 255, 255);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+    }
+
+    .signup h2 {
+        margin-bottom: 20px;
+    }
+
+    .signup input {
+        margin-bottom: 10px;
+        padding: 10px;
+        width: 250px;
+        border: 1px solid #000;
+        border-radius: 5px;
+    }
+
+    .signup button {
+        padding: 10px;
+        width: 150px;
+        border: none;
+        border-radius: 5px;
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .signup button:hover {
+        transform: scale(1.1);
+        transition: 0.5s;
+    }
+
+    .signup a {
+        margin-top: 10px;
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+    }
+</style>
+<script>
+    const login = document.querySelector('.login');
+    const signup = document.querySelector('.signup');
+
+    login.style.display = 'block';
+    signup.style.display = 'none';
+    login.style.transition = '0.5s';
+    signup.style.transition = '0.5s';
+
+    function showLogin() {
+        login.style.display = 'block';
+        signup.style.display = 'none';
+    }
+
+    function showSignup() {
+        login.style.display = 'none';
+        signup.style.display = 'block';
+    }
+</script>
+</html>

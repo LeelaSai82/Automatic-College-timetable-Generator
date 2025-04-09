@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <section>
+        <button id="back">back</button>
+        <h1>Generate Branch Wise</h1>
+        <div class="card">
+            <div class="card1">
+                <img src="https://clipground.com/images/cse-logo-clipart.gif" alt="">
+                <div class="details">
+                    <h3>Time Table</h3>
+                    <p>Generate your time table</p>
+                    <a href="./CSESection.html"><input type="button" value="Generate" id="generate"></a>
+                </div>
+            </div>
+            <div class="card2">
+                <img src="https://th.bing.com/th/id/OIP.va5tnyliZGSw_7sCoKROygHaE7?rs=1&pid=ImgDetMain" alt="">
+                <div class="details">
+                    <h3>Time Table</h3>
+                    <p>Generate your time table</p>
+                    <a href="./ECE.html"><input type="button" value="Generate" id="generate"></a>
+                </div>
+            </div>
+            <div class="card3">
+                <img src="https://i.ytimg.com/vi/I_QWDGdLa4g/maxresdefault.jpg" alt="">
+                <div class="details">
+                    <h3>Time Table</h3>
+                    <p>Generate your time table</p>
+                    <a href="./MECH.html"><input type="button" value="Generate" id="generate"></a>
+                </div>
+            </div>
+            <div class="card4">
+                <img src="https://www.aceec.ac.in/wp-content/uploads/2021/08/CSE-AIML-230x230.jpg" alt="">
+                <div class="details">
+                    <h3>Time Table</h3>
+                    <p>Generate your time table</p>
+                    <a href="./CSEAI.html"><input type="button" value="Generate" id="generate"></a>
+                </div>
+            </div>
+            <div class="card5">
+                <img src="https://cdn.dribbble.com/users/16968/screenshots/1259711/civil_logo.png?compress=1&resize=400x300&vertical=top" alt="">
+                <div class="details">
+                    <h3>Time Table</h3>
+                    <p>Generate your time table</p>
+                    <a href="./CIVIL.html"><input type="button" value="Generate" id="generate"></a>
+                </div>
+            </div>
+            <div class="card6">
+                <img src="https://th.bing.com/th/id/OIP.eA-P3iVTDfMSSRjtBPaWYgAAAA?w=400&h=400&rs=1&pid=ImgDetMain" alt="">
+                <div class="details">
+                    <h3>Time Table</h3>
+                    <p>Generate your time table</p>
+                    <a href="./CSD.html"><input type="button" value="Generate" id="generate"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<style>
+    * {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    #back {
+        position: fixed;
+        top: 16px;
+        left: 35px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #010101a7;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 7px;
+    }
+
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card1,
+    .card2,
+    .card3,
+    .card4,
+    .card5,
+    .card6 {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        height: 350px;
+        padding: 20px;
+        background: rgb(2, 0, 36);
+        background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(14, 14, 17, 1) 35%, rgba(43, 84, 140, 1) 100%);
+        color: white;
+        border-radius: 10px;
+        margin-right: 20px;
+        overflow: hidden;
+    }
+
+    .card1:hover,
+    .card2:hover,
+    .card3:hover, 
+    .card4:hover, 
+    .card5:hover, 
+    .card6:hover {
+        transform: scale(1.1);
+        transition: 0.3s;
+    }
+
+    .card1,
+    .card2,
+    .card3,
+    .card4,
+    .card5,
+    .card6 {
+        transition: transform 0.5s;
+    }
+
+    .card1 img,
+    .card2 img,
+    .card4 img,
+    .card5 img,
+    .card6 img,
+    .card3 img {
+        margin-top: -80px;
+        margin-bottom: 20px;
+        width: 350px;
+        height: 200px;
+    }
+
+    .details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    input[type="button"] {
+        margin-top: 20px;
+        padding: 10px;
+        width: 150px;
+        border-radius: 15px;
+        border: none;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0px 0px 10px solid black;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 600px) {
+        .card {
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+    }
+</style>
+<script>
+    document.getElementById('back').addEventListener('click', () => {
+        window.location.href = '../Teacher.html';
+    });
+</script>
+
+</html>
