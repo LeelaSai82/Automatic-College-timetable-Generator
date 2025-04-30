@@ -49,7 +49,7 @@ To use the Classroom Scheduler, follow these steps:
 
 1. Pull the Docker image from Docker Hub:
    ```sh
-   docker pull <your-dockerhub-username>/classroom-scheduler:latest
+   docker pull leelasai847/my-static-site:latest
    ```
 
 ## File Descriptions
